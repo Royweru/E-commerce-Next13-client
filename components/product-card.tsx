@@ -8,13 +8,18 @@ import Currency from "./ui/currency";
 
 
 import { Divide, Expand, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
   data: Product;
 }
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
+    const router = useRouter()
+    const handleClick=()=>{
+        router.push(`/product/${data?.id}`)
+    }
   return (
-    <div className=" cursor-pointer group bg-white rounded-xl border p-3 space-y-4">
+    <div onClick={handleClick} className=" cursor-pointer group bg-white rounded-xl border p-3 space-y-4">
       <div className=" aspect-square rounded-xl bg-gray-100 relative">
         <Image
           fill

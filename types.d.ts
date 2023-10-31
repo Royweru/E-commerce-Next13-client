@@ -22,7 +22,7 @@ interface Product{
     images:Image[]
 }
 
-interface Image{
+interface ImageType{
     id:string,
     url:string
 }

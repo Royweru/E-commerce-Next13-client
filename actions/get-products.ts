@@ -20,7 +20,7 @@ const getProducts = async(query:Query):Promise<Product[]> => {
       isFeatured:query.isFeatured
     }
   })
-  const res = await fetch(url,{next:{revalidate:30}})
+  const res = await fetch(url,{next:{revalidate:10}})
   if(!res.ok){
     throw new Error("There was a problem fetching yourcategories")
   }
