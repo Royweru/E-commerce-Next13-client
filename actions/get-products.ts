@@ -22,7 +22,7 @@ const getProducts = async(query:Query):Promise<Product[]> => {
   })
   const res = await fetch(url,{next:{revalidate:10}})
   if(!res.ok){
-    throw new Error("There was a problem fetching yourcategories")
+    throw new Error("There was a problem fetching your products")
   }
   return res.json()
 }

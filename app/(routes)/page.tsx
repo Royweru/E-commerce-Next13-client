@@ -9,7 +9,7 @@ export default async function Home() {
   const billboard = await getBillboard("64029e63-439f-463b-86a5-7ed002ea68a9")
  
   return (
-    <main className="flex min-h-screen flex-col justify-between w-full ">
+    <main className="flex min-h-screen flex-col justify-between  ">
       <Container>
         <div className=' space-y-10 pb-10 '>
           <Billboard data={billboard} />
