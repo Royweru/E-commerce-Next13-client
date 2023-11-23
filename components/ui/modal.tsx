@@ -2,6 +2,7 @@
 import { Transition, Dialog } from "@headlessui/react";
 import IconButton from "./icon-button";
 import { X } from "lucide-react";
+import { Fragment } from "react";
 interface ModalProps {
   open: boolean;
   onClose: () => void;
@@ -10,7 +11,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
   return (
-    <Transition show={open} appear as={Fragment}>
+    <Transition show={open} appear as={Fragment} >
       <Dialog as="div" className="relative z-10" onClose={onClose}>
         <div className=" fixed inset-0 bg-black bg-opacity-50" />
         <div className=" fixed inset-0 overflow-y-auto">
@@ -31,6 +32,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
                    <div className=" absolute right-4 top-4">
                      <IconButton onClick={onClose} icon={<X size={15} />} />
                    </div>
+                   {children}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

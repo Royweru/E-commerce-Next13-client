@@ -9,7 +9,7 @@ import Currency from "./ui/currency";
 
 import { Divide, Expand, ShoppingCart } from "lucide-react";
 import { useRouter } from "next/navigation";
-import PreviewModal from "./preview-modal";
+
 import usePreviewModal from "@/hooks/use-preview-model";
 
 interface ProductCardProps {

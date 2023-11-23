@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 import Navbar from "@/components/navbar";
@@ -26,6 +29,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Toaster />
       </body>
 
     </html>
