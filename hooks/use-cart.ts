@@ -9,40 +9,40 @@ interface CartStore {
   removeAll: () => void;
 }
 
-const useCart = create<CartStore>((set, get) => ({
-  items: [],
-  addItem: (data: Product) => {
-    const currentItems = get().items;
-    const existingItems = currentItems.find((item) => item.id === data.id);
-    if (existingItems) {
-      return toast({
-        description: 'Item already in cart',
-        duration: 5000,
-      });
-    }
-    set({ items: [...get().items, data] });
-    toast({
-      title: 'Success',
-      description: 'Item added to cart successfully!',
-      duration: 3000,
-    });
-  },
-  removeItem: (id: string) => {
-    set({ items: [...get().items.filter((item) => item.id !== id)] });
-    toast({
-      description: 'Item removed from cart',
-      duration: 3000,
-    });
-  },
-  removeAll: () => set({ items: [] }),
-}));
 
-const usePersistedCart = persist<CartStore>(
-  useCart,
+
+const useCart = persist<CartStore>(
+  create<CartStore>((set, get) => ({
+    items: [],
+    addItem: (data: Product) => {
+      const currentItems = get().items;
+      const existingItems = currentItems.find((item) => item.id === data.id);
+      if (existingItems) {
+        return toast({
+          description: 'Item already in cart',
+          duration: 5000,
+        });
+      }
+      set({ items: [...get().items, data] });
+      toast({
+        title: 'Success',
+        description: 'Item added to cart successfully!',
+        duration: 3000,
+      });
+    },
+    removeItem: (id: string) => {
+      set({ items: [...get().items.filter((item) => item.id !== id)] });
+      toast({
+        description: 'Item removed from cart',
+        duration: 3000,
+      });
+    },
+    removeAll: () => set({ items: [] }),
+  })),
   {
     name: 'cart-storage',
     storage: createJSONStorage(() => localStorage),
   }
 );
 
-export default usePersistedCart;
+export default useCart;
